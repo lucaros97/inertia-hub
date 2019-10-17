@@ -4,8 +4,8 @@
 
 Clone the repository:
 ~~~sh
-git clone https://github.com/lucaros97/inertia-laravel-vue-boilerplate.git
-cd inertia-laravel-vue-boilerplate
+git clone https://github.com/lucaros97/inertia-hub.git
+cd inertia-hub
 ~~~
 
 Install PHP dependencies:
@@ -36,6 +36,18 @@ Generate application key:
 
 ```sh
 php artisan key:generate
+```
+
+Migrate tables:
+
+```sh
+php artisan migrate
+```
+
+Seed tables:
+
+```sh
+php artisan db:seed
 ```
 
 
