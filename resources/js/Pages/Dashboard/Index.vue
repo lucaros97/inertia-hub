@@ -1,19 +1,14 @@
 <template>
-  <layout>
-    <h1>Welcome, {{ name }}</h1>
-    <p>Welcome to my first Inertia.js app!</p>
+  <layout title="Dashboard">
+    <h1 class="mb-8 font-bold text-3xl">Dashboard</h1>
   </layout>
 </template>
 
 <script>
 import Layout from '@/Shared/Layout'
-
 export default {
   components: {
     Layout,
   },
-  props: {
-      name: String,
-  }
 }
 </script>

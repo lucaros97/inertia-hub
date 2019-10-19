@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Inertia\Inertia;
+use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -18,22 +23,17 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
 
+    use AuthenticatesUsers;
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    protected $redirectTo = '/';
+    
+    public function showLoginForm()
     {
-        $this->middleware('guest')->except('logout');
+        return Inertia::render('Auth/Login');
     }
 }

@@ -1,9 +1,13 @@
 import { InertiaApp } from '@inertiajs/inertia-vue'
+import PortalVue from 'portal-vue'
 import Vue from 'vue'
 
+Vue.config.productionTip = false
+Vue.mixin({ methods: { route: window.route } })
 Vue.use(InertiaApp)
+Vue.use(PortalVue)
 
-const app = document.getElementById('app')
+let app = document.getElementById('app')
 
 new Vue({
   render: h => h(InertiaApp, {

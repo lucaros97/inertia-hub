@@ -12,10 +12,14 @@
   </main>
 </template>
 <script>
+// import { InertiaLink } from 'inertia-vue'
+
 import { InertiaLink } from '@inertiajs/inertia-vue'
+
+
 export default {
-  components: {
-    InertiaLink
-  }
+    components: {
+        InertiaLink
+    }
 }
 </script>

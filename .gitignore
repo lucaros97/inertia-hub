@@ -1,9 +1,11 @@
 /node_modules
+
 /public/*
 !/public/favicon.ico
 !/public/robots.txt
 !/public/.htaccess
 !public/index.php
+
 /storage/*.key
 /vendor
 .env

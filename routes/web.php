@@ -1,7 +1,4 @@
 <?php
-
-use Inertia\Inertia;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,16 +10,15 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome');
+// Auth
+Route::get('login')->name('login')->uses('Auth\LoginController@showLoginForm')->middleware('guest');
+Route::post('login')->name('login.attempt')->uses('Auth\LoginController@login')->middleware('guest');
+Route::post('logout')->name('logout')->uses('Auth\LoginController@logout');
+
+// Dashboard
+Route::get('/')->name('dashboard')->uses('DashboardController')->middleware('auth');
+
+// 500 error
+Route::get('500', function () {
+    echo $fail;
 });
-
-Route::get('/about', function () {
-    return Inertia::render('About');
-});
-
-Route::get('/contact', function () {
-    return Inertia::render('Contact');
-});
-
-
