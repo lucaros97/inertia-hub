@@ -7,6 +7,8 @@ Vue.mixin({ methods: { route: window.route } })
 Vue.use(InertiaApp)
 Vue.use(PortalVue)
 
+Vue.prototype.$route = (...args) => route(...args).url()
+
 let app = document.getElementById('app')
 
 new Vue({
