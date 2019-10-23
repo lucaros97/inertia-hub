@@ -30,9 +30,15 @@
             <!-- <a href="#" class="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700">Partners</a> -->
             <a href="#" class="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700">About</a>
           </div>
-          <div class="ml-10 relative flex items-baseline">
+          <div class="ml-10 relative flex items-baseline" v-if="!$page.auth">
             <a href="#" class="text-sm font-medium text-gray-900 hover:text-gray-700">Log in</a>
             <a href="#" class="ml-8 px-3 py-2 font-medium text-center text-sm rounded-lg bg-gray-300 text-gray-900 hover:bg-gray-400 focus:outline-none focus:bg-gray-400">Create Account</a>
+          </div>
+          <div class="flex items-center px-6" v-else>
+            <img class="h-10 w-10 rounded-full flex-no-shrink" src="https://images.unsplash.com/photo-1541271696563-3be2f555fc4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=1.75&w=200&h=200&q=80" alt="">
+            <div class="ml-4">
+              <p class="font-semibold text-gray-900 leading-none">{{ $page.auth.user.first_name + ' ' + $page.auth.user.last_name }}</p>
+            </div>
           </div>
         </div>
       </nav>
