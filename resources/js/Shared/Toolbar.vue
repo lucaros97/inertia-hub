@@ -1,7 +1,7 @@
 <template>
-  <div id="nav" class="bg-white shadow">
+  <div id="nav" class="bg-white border-b border-gray-200 fixed top-0 inset-x-0 z-100 h-16 items-center">
     <div class="md:px-8">
-      <nav class="relative flex flex-wrap items-center justify-between md:py-4">
+      <nav class="relative flex flex-wrap items-center justify-between md:py-3">
         <div class="relative z-10 flex-shrink-0 pl-4 py-4 md:p-0">
           <!-- <img class="h-8 w-8" src="/img/example-logo.svg" alt=""> -->
             <a class="md:flex md:items-end" href="/">
@@ -142,3 +142,8 @@ export default {
     }
 }
 </script>
+<style lang="scss">
+  .z-100 {
+    z-index: 100 !important;
+  }
+</style>

@@ -2,6 +2,14 @@ import { InertiaApp } from '@inertiajs/inertia-vue'
 import PortalVue from 'portal-vue'
 import Vue from 'vue'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCompass, faQuestion, faCheckCircle, faChartLine, faTags, faUserCheck } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faCompass, faQuestion, faCheckCircle, faChartLine, faTags, faUserCheck)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 Vue.config.productionTip = false
 Vue.mixin({ methods: { route: window.route } })
 Vue.use(InertiaApp)
