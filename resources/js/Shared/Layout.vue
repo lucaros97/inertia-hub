@@ -1,18 +1,14 @@
 <template>
-  <main>
+  <main class="h-screen flex flex-col">
     <Toolbar></Toolbar>
-    <div class="w-full max-w-screen-xl px-6">
-      <div class="lg:flex -mx-6">
+    <!-- <div class="w-full max-w-screen-xl px-6"> -->
+      <div class="flex-1 flex overflow-hidden">
           <Sidebar></Sidebar>
-          <div id="content-wrapper" class="min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible lg:w-3/4 xl:w-4/5">
-            <div class="pt-24 pb-16 lg:pt-28 w-full">
-              <div class="px-6 xl:px-12 w-full mx-auto lg:ml-0 lg:mr-auto xl:mx-0 xl:w-full">
-                <slot />
-              </div>
-            </div>
-          </div>
+          <!-- <main class="flex-1 flex bg-gray-200"> -->
+            <slot />
+          <!-- </main> -->
       </div>
-    </div>
+    <!-- </div> -->
   </main>
 </template>
 <script>
