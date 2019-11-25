@@ -6,10 +6,14 @@
           <path d="M3 6a1 1 0 011-1h16a1 1 0 110 2H4a1 1 0 01-1-1zM3 12a1 1 0 011-1h16a1 1 0 110 2H4a1 1 0 01-1-1zM4 17a1 1 0 100 2h7a1 1 0 100-2H4z"></path>
         </svg>
       </button>
-      <button class="hidden sm:flex sm:items-center sm:w-full">
+      <a href="#" v-if="!$page.auth.user" class="ml-2 inline-block px-3 py-2 rounded-lg leading-none text-sm font-medium text-white bg-gray-600">
+          Login/Signup
+        </a>
+      <button class="hidden sm:flex sm:items-center sm:w-full" v-else>
         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=144&amp;h=144&amp;q=80" alt="" class="h-8 w-8 rounded-full object-cover">
         <span class="hidden lg:inline ml-4 mr-2 text-sm font-medium text-white">
           {{ $page.auth.user.first_name }} {{ $page.auth.user.last_name }}
+          <!-- Sono qui -->
         </span> 
         <svg viewBox="0 0 24 24" class="ml-2 h-6 w-6 fill-current text-gray-400 lg:ml-auto">
           <path d="M7.293 9.293a1 1 0 011.414 0L12 12.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>

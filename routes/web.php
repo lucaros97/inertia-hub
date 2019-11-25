@@ -18,8 +18,8 @@ Route::post('logout')->name('logout')->uses('Auth\LoginController@logout');
 // Dashboard
 Route::get('/')->name('dashboard')->uses('DashboardController')->middleware('auth');
 
-// Browse
-Route::get('browse')->name('browse')->uses('BrowseController');
+Route::get('/threads')->name('threads')->uses('ThreadsController@index');
+Route::get('/threads/{thread}')->name('showthread')->uses('ThreadsController@show');
 
 // 500 error
 Route::get('500', function () {
