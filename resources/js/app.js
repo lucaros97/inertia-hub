@@ -2,6 +2,8 @@ import { InertiaApp } from '@inertiajs/inertia-vue'
 import PortalVue from 'portal-vue'
 import Vue from 'vue'
 
+Vue.use(require('vue-moment'));
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCompass, faCheckCircle, faChartLine, faTags, faUserCheck, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'

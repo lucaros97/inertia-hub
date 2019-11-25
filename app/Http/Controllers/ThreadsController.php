@@ -18,6 +18,15 @@ class ThreadsController extends Controller
 
     public function show(Thread $thread)
     {
-        return Inertia::render('Threads/Show', compact('thread'));
+        $replies = $thread->replies;
+
+        foreach ($replies as $key => $reply) {
+            $reply->owner = $reply->owner;
+        }
+
+        return Inertia::render('Threads/Show', [
+            'thread'   => $thread,
+            'replies'   => $replies
+        ]);
     }
 }

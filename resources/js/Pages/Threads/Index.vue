@@ -22,7 +22,7 @@
               </div>
             </div> 
             <div class="mt-4 xl:mt-6 text-gray-800 text-sm">
-              <p>Thanks so much!! Can’t wait to try it out :)</p>
+              <p>{{ thread.body }}</p>
             </div>
           </inertia-link>
         </article>
