@@ -15,13 +15,14 @@ Route::get('login')->name('login')->uses('Auth\LoginController@showLoginForm')->
 Route::post('login')->name('login.attempt')->uses('Auth\LoginController@login')->middleware('guest');
 Route::post('logout')->name('logout')->uses('Auth\LoginController@logout');
 
-// Dashboard
+
 Route::get('/')->name('dashboard')->uses('DashboardController')->middleware('auth');
-
 Route::get('/threads')->name('threads')->uses('ThreadsController@index');
+Route::get('/threads/create')->name('create_thread')->uses('ThreadsController@create');
+Route::post('/threads')->name('add_thread')->uses('ThreadsController@store');
 Route::get('/threads/{thread}')->name('showthread')->uses('ThreadsController@show');
-
 Route::post('/threads/{thread}/replies')->name('add_reply_to_thread')->uses('RepliesController@store');
+
 
 // 500 error
 Route::get('500', function () {
