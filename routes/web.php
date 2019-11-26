@@ -21,6 +21,8 @@ Route::get('/')->name('dashboard')->uses('DashboardController')->middleware('aut
 Route::get('/threads')->name('threads')->uses('ThreadsController@index');
 Route::get('/threads/{thread}')->name('showthread')->uses('ThreadsController@show');
 
+Route::post('/threads/{thread}/replies')->name('add_reply_to_thread')->uses('RepliesController@store');
+
 // 500 error
 Route::get('500', function () {
     echo $fail;

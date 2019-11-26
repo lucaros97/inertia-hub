@@ -1,26 +1,26 @@
 <template>
-  <main class="flex-1 flex bg-gray-200">
+  <main class="flex-1 flex">
     <div class="flex-1 flex flex-col w-0 mx-auto max-w-6xl overflow-hidden">
       <div class="p-3 flex-1 overflow-y-auto">
         <article class="mt-3 px-6 pt-4 pb-6 xl:px-10 xl:pt-6 xl:pb-8 bg-white rounded-lg shadow">
           <div class="flex items-center">
             <div>
-              <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3.5&amp;w=144&amp;h=144&amp;q=80" alt="" class="h-8 w-8 rounded-full object-cover">
+              <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3.5&amp;w=144&amp;h=144&amp;q=80" alt="" class="h-12 w-12 rounded-full object-cover">
             </div>
             <div class="ml-3 md:items-center md:justify-between">
-              <p class="text-base font-semibold leading-tight xl:text-lg">
-                <span class="text-gray-900">{{ thread.title }}</span>
-                <span class="text-gray-600">wrote</span>
+              <p class="text-base font-semibold leading-tight xl:text-xl">
+                <span class="text-gray-900"> {{ thread.title }}</span>
+                <!-- <span class="text-gray-600">wrote</span> -->
               </p>
               <div class="flex items-center">
                 <span class="text-sm text-gray-600">
-                  {{ thread.updated_at }}
+                  {{ thread.creator.name }} created {{ thread.created_at | moment("from", "now") }}
                 </span>
               </div>
             </div>
           </div> 
           <div class="mt-4 xl:mt-6 text-gray-800 text-sm">
-            <p>Thanks so much!! Can’t wait to try it out :)</p>
+            <p>{{ thread.body }}</p>
           </div>
         </article>
         <article v-for="reply in thread.replies" :key="reply.id" class="mt-3 px-6 pt-4 pb-6 xl:px-10 xl:pt-6 xl:pb-8 bg-white rounded-lg shadow">
@@ -35,17 +35,23 @@
                 </a>
                 <span class="text-gray-600 text-sm">{{ reply.created_at | moment("from", "now") }}</span>
               </p>
-              <!-- <div class="flex items-center">
-                <span class="text-sm text-gray-600">
-                  {{ reply.updated_at }}
-                </span>
-              </div> -->
             </div>
           </div> 
           <div class="mt-4 xl:mt-6 text-gray-800 text-sm">
             <p>{{ reply.body }}</p>
           </div>
         </article>
+        <div v-if="$page.auth.user" class="mt-3">
+          <form @submit.prevent="submit">
+            <div class="form-group">
+              <textarea name="name" id="body" rows="5" v-model="formReply.body" class="resize-none form-textarea mt-1 block w-full" placeholder="Have something to say?"></textarea>
+            </div>
+            <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 my-3 rounded">Post</button>
+          </form>
+        </div>
+        <div v-else class="text-center mt-8">
+          <span>Please <inertia-link class="text-blue-600" :href="route('login')">sign in </inertia-link> if you want to partecipate</span>
+        </div>
       </div>
     </div>
   </main>
@@ -54,9 +60,24 @@
 import Layout from '@/Shared/Layout'
 export default {
   layout: Layout,
+  data() {
+    return {
+      formReply: {
+        body: null
+      }
+    }
+  },
   props: {
     thread: Object,
     // replies: Array
+  },
+  methods: {
+    submit() {
+      this.$inertia.post('/threads/' + this.thread.id + '/replies', this.formReply)
+        .then(() => this.formReply = {
+          body: null
+        });
+    }
   }
 }
 </script>
