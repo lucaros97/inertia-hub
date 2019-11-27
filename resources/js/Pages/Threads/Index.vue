@@ -3,6 +3,14 @@
     <div class="flex-1 flex flex-col w-0 mx-auto max-w-6xl overflow-hidden">
       <div class="p-3 flex-1 overflow-y-auto">
       <span class="text-3xl font-bold">All Questions</span>
+        <select @change.prevent="selectChannel" v-model="selectedChannel" class="block rounded- appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+          <option value="" selected>All</option>
+          <option v-for="channel in channels" :key="channel.id" :value="channel.slug">
+            <!-- <inertia-link :href="route('channels', { channel: channel.slug })"> -->
+              {{ channel.name }}
+            <!-- </inertia-link> -->
+          </option>
+        </select>
         <article v-for="thread in threads" :key="thread.id" class="mt-3 px-6 pt-4 pb-6 xl:px-10 xl:pt-6 xl:pb-8 bg-white hover:bg-gray-200 rounded-lg">
           <inertia-link :href="route('showthread', { thread: thread.id, channel: thread.channel.slug })">
             <div class="flex items-center">
@@ -34,8 +42,19 @@
 import Layout from '@/Shared/Layout'
 export default {
   layout: Layout,
+  data() {
+    return {
+      selectedChannel: ''
+    }
+  },
   props: {
-    threads: Array
+    threads: Array,
+    channels: Array
+  },
+  methods: {
+    selectChannel() {
+      this.$inertia.visit('/threads/'+this.selectedChannel, {});
+    }
   }
 }
 </script>

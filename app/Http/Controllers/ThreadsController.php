@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 
+use App\Channel;
+use App\Thread;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use App\Thread;
 
 class ThreadsController extends Controller
 {
@@ -16,9 +18,13 @@ class ThreadsController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
-    public function index()
+    public function index(Channel $channel)
     {
-        $threads = Thread::latest()->get();
+        if($channel->exists) {
+            $threads = $channel->threads()->latest()->get(); 
+        } else {
+            $threads = Thread::latest()->get();
+        }
         
         foreach ($threads as $thread) {
             $thread->channel = $thread->channel;
@@ -26,6 +32,7 @@ class ThreadsController extends Controller
 
         return Inertia::render('Threads/Index', [
             'threads' => $threads,
+            'channels' => Channel::all()
         ]);
     }
 
@@ -36,6 +43,12 @@ class ThreadsController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'body'  => 'required',
+            'channel_id' => 'required|exists:channels,id'
+        ]);
+
         $thread = Thread::create([
             'user_id'       => auth()->id(),
             'channel_id'    => request('channel_id'),

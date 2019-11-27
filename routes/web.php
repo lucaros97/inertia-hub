@@ -21,6 +21,7 @@ Route::get('/threads')->name('threads')->uses('ThreadsController@index');
 Route::get('/threads/create')->name('create_thread')->uses('ThreadsController@create');
 Route::get('/threads/{channel}/{thread}')->name('showthread')->uses('ThreadsController@show');
 Route::post('/threads')->name('add_thread')->uses('ThreadsController@store');
+Route::get('threads/{channel}')->name('channels')->uses('ThreadsController@index');
 Route::post('/threads/{channel}/{thread}/replies')->name('add_reply_to_thread')->uses('RepliesController@store');
 
 

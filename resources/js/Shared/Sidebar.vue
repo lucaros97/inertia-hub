@@ -16,7 +16,7 @@
           <a href="#" class="-mx-3 px-3 py-2 flex items-center justify-between text-sm font-medium bg-gray-200 rounded-lg">
             <span class="inline-flex">
               <font-awesome-icon icon="compass" class="h-6 w-6 fill-current text-gray-500" size="lg" />
-              <span class="ml-2 text-gray-900">Browse</span>
+              <span class="ml-2 text-gray-900">Browse Threads</span>
             </span> 
             <span class="inline-block w-8 text-center py-1 leading-none text-xs font-semibold text-gray-700 bg-gray-300 rounded-full">
               6
