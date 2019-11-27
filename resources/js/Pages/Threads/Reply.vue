@@ -11,11 +11,6 @@
           </a>
           <span class="text-gray-600 text-sm">{{ reply.created_at }}</span>
         </p>
-        <!-- <div class="flex items-center">
-          <span class="text-sm text-gray-600">
-            {{ reply.updated_at }}
-          </span>
-        </div> -->
       </div>
     </div> 
     <div class="mt-4 xl:mt-6 text-gray-800 text-sm">

@@ -19,9 +19,9 @@ Route::post('logout')->name('logout')->uses('Auth\LoginController@logout');
 Route::get('/')->name('dashboard')->uses('DashboardController')->middleware('auth');
 Route::get('/threads')->name('threads')->uses('ThreadsController@index');
 Route::get('/threads/create')->name('create_thread')->uses('ThreadsController@create');
+Route::get('/threads/{channel}/{thread}')->name('showthread')->uses('ThreadsController@show');
 Route::post('/threads')->name('add_thread')->uses('ThreadsController@store');
-Route::get('/threads/{thread}')->name('showthread')->uses('ThreadsController@show');
-Route::post('/threads/{thread}/replies')->name('add_reply_to_thread')->uses('RepliesController@store');
+Route::post('/threads/{channel}/{thread}/replies')->name('add_reply_to_thread')->uses('RepliesController@store');
 
 
 // 500 error

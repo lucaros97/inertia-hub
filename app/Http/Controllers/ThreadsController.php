@@ -19,8 +19,14 @@ class ThreadsController extends Controller
     public function index()
     {
         $threads = Thread::latest()->get();
+        
+        foreach ($threads as $thread) {
+            $thread->channel = $thread->channel;
+        }
 
-        return Inertia::render('Threads/Index', compact('threads'));
+        return Inertia::render('Threads/Index', [
+            'threads' => $threads,
+        ]);
     }
 
     public function create()
@@ -31,15 +37,16 @@ class ThreadsController extends Controller
     public function store(Request $request)
     {
         $thread = Thread::create([
-            'user_id'   => auth()->id(),
-            'title'     => request('title'),
-            'body'      => request('body')
+            'user_id'       => auth()->id(),
+            'channel_id'    => request('channel_id'),
+            'title'         => request('title'),
+            'body'          => request('body')
         ]);
 
         return Redirect::route('showthread', $thread->id);
     }
 
-    public function show(Thread $thread)
+    public function show($channelId, Thread $thread)
     {
         $replies = $thread->replies;
         $creator = $thread->creator;
@@ -47,6 +54,8 @@ class ThreadsController extends Controller
         foreach ($replies as $key => $reply) {
             $reply->owner = $reply->owner;
         }
+
+        $thread->channel = $thread->channel;
 
         return Inertia::render('Threads/Show', [
             'thread'    => $thread,

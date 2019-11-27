@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     submit() {
-      this.$inertia.post('/threads/' + this.thread.id + '/replies', this.formReply)
+      this.$inertia.post('/threads/' + this.thread.channel.slug + '/' + this.thread.id + '/replies', this.formReply)
         .then(() => this.formReply = {
           body: null
         });

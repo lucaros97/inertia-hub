@@ -4,7 +4,7 @@
       <div class="p-3 flex-1 overflow-y-auto">
       <span class="text-3xl font-bold">All Questions</span>
         <article v-for="thread in threads" :key="thread.id" class="mt-3 px-6 pt-4 pb-6 xl:px-10 xl:pt-6 xl:pb-8 bg-white hover:bg-gray-200 rounded-lg">
-          <inertia-link :href="route('showthread', { thread: thread.id })">
+          <inertia-link :href="route('showthread', { thread: thread.id, channel: thread.channel.slug })">
             <div class="flex items-center">
               <div>
                 <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3.5&amp;w=144&amp;h=144&amp;q=80" alt="" class="h-12 w-12 rounded-full object-cover">
