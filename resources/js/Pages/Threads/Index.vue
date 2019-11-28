@@ -1,14 +1,25 @@
 <template>
-  <main class="flex-1 flex bg-white">
-    <div class="flex-1 flex flex-col w-0 mx-auto max-w-6xl overflow-hidden">
-      <div class="p-3 flex-1 overflow-y-auto">
-      <span class="text-3xl font-bold">All Questions</span>
-        <select @change.prevent="selectChannel" v-model="selectedChannel" class="block rounded- appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-          <option value="">All</option>
-          <option v-for="channel in channels" :key="channel.id" :value="channel.slug">
-              {{ channel.name }}
-          </option>
-        </select>
+  <main class="flex-1 flex-col overflow-auto">
+    <div class="max-w-6xl mx-auto">
+      <div class="relative p-3 overflow-hidden">
+        <span class="text-3xl font-bold">All Questions</span>
+        <div class="flex align-items-center justify-between mt-5">
+          <div>
+            <select @change.prevent="selectChannel" v-model="selectedChannel" class="block rounded- appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+              <option value="">All</option>
+              <option v-for="channel in channels" :key="channel.id" :value="channel.slug">
+                  {{ channel.name }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <inertia-link :href="route('create_thread')" class="bg-indigo-500 hover:bg-indigo-700 rounded-full text-white font-bold py-2 px-4">
+              Create thread
+            </inertia-link>
+          </div>
+        </div>
+      </div>
+      <div class="p-3 overflow-y-auto">
         <article v-for="thread in threads" :key="thread.id" class="mt-3 px-6 pt-4 pb-6 xl:px-10 xl:pt-6 xl:pb-8 bg-white hover:bg-gray-200 rounded-lg">
           <inertia-link :href="route('showthread', { thread: thread.id, channel: thread.channel.slug })">
             <div class="flex items-center">
