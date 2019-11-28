@@ -6,9 +6,9 @@
           <path d="M3 6a1 1 0 011-1h16a1 1 0 110 2H4a1 1 0 01-1-1zM3 12a1 1 0 011-1h16a1 1 0 110 2H4a1 1 0 01-1-1zM4 17a1 1 0 100 2h7a1 1 0 100-2H4z"></path>
         </svg>
       </button>
-      <a href="#" v-if="!$page.auth.user" class="ml-2 inline-block px-3 py-2 rounded-lg leading-none text-sm font-medium text-white bg-gray-600">
-          Login/Signup
-        </a>
+      <inertia-link :href="route('login')" v-if="!$page.auth.user" class="ml-2 inline-block px-3 py-2 rounded-lg leading-none text-sm font-medium text-white bg-gray-600">
+        Login/Signup
+      </inertia-link>
       <button class="hidden sm:flex sm:items-center sm:w-full" v-else>
         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=144&amp;h=144&amp;q=80" alt="" class="h-8 w-8 rounded-full object-cover">
         <span class="hidden lg:inline ml-4 mr-2 text-sm font-medium text-white">

@@ -13,15 +13,15 @@
           Mailboxes
         </h2> 
         <div class="mt-3">
-          <a href="#" class="-mx-3 px-3 py-2 flex items-center justify-between text-sm font-medium bg-gray-200 rounded-lg">
+          <inertia-link :href="route('threads')" class="-mx-3 px-3 py-2 flex items-center justify-between text-sm font-medium bg-gray-200 rounded-lg">
             <span class="inline-flex">
-              <font-awesome-icon icon="compass" class="h-6 w-6 fill-current text-gray-500" size="lg" />
-              <span class="ml-2 text-gray-900">Browse Threads</span>
+                <font-awesome-icon icon="compass" class="h-6 w-6 fill-current text-gray-500" size="lg" />
+                <span class="ml-2 text-gray-900">Browse Threads</span>
             </span> 
             <span class="inline-block w-8 text-center py-1 leading-none text-xs font-semibold text-gray-700 bg-gray-300 rounded-full">
               6
             </span>
-          </a> 
+          </inertia-link>
           <a href="#" class="mt-2 -mx-3 px-3 py-2 flex items-center justify-between text-sm font-medium hover:bg-gray-200 rounded-lg">
             <span class="inline-flex">
               <font-awesome-icon icon="question-circle" class="h-6 w-6 fill-current text-gray-500" size="lg" />

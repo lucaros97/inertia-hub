@@ -4,11 +4,9 @@
       <div class="p-3 flex-1 overflow-y-auto">
       <span class="text-3xl font-bold">All Questions</span>
         <select @change.prevent="selectChannel" v-model="selectedChannel" class="block rounded- appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-          <option value="" selected>All</option>
+          <option value="">All</option>
           <option v-for="channel in channels" :key="channel.id" :value="channel.slug">
-            <!-- <inertia-link :href="route('channels', { channel: channel.slug })"> -->
               {{ channel.name }}
-            <!-- </inertia-link> -->
           </option>
         </select>
         <article v-for="thread in threads" :key="thread.id" class="mt-3 px-6 pt-4 pb-6 xl:px-10 xl:pt-6 xl:pb-8 bg-white hover:bg-gray-200 rounded-lg">
@@ -18,20 +16,17 @@
                 <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3.5&amp;w=144&amp;h=144&amp;q=80" alt="" class="h-12 w-12 rounded-full object-cover">
               </div>
               <div class="ml-3 md:items-center md:justify-between">
-                <p class="text-base font-medium leading-tight xl:text-xl">
+                <p class="text-base font-semibold leading-tight xl:text-lg">
                   <span class="text-gray-900 hover:underline">{{ thread.title }}</span>
-                  <span class="text-gray-600">wrote</span>
+                  <!-- <span class="text-gray-600">wrote</span> -->
                 </p>
                 <div class="flex items-center">
                   <span class="text-sm text-gray-600">
-                    {{ thread.updated_at }}
+                    {{ thread.creator.name }} created {{ thread.updated_at | moment("from", "now") }}
                   </span>
                 </div>
               </div>
             </div> 
-            <!-- <div class="mt-4 xl:mt-6 text-gray-800 text-sm">
-              <p>{{ thread.body }}</p>
-            </div> -->
           </inertia-link>
         </article>
       </div>

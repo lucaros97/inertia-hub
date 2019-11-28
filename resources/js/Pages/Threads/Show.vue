@@ -50,7 +50,7 @@
           </form>
         </div>
         <div v-else class="text-center mt-8">
-          <span>Please <inertia-link class="text-blue-600" :href="route('login')">sign in </inertia-link> if you want to partecipate</span>
+          <span class="font-semibold">Please <inertia-link class="text-blue-600" :href="route('login')">sign in </inertia-link> or <inertia-link class="text-blue-600" :href="route('login')">create an account</inertia-link> if you want to partecipate</span>
         </div>
       </div>
     </div>

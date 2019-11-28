@@ -28,6 +28,7 @@ class ThreadsController extends Controller
         
         foreach ($threads as $thread) {
             $thread->channel = $thread->channel;
+            $thread->creator = $thread->creator;
         }
 
         return Inertia::render('Threads/Index', [
