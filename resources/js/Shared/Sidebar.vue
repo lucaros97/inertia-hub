@@ -22,12 +22,12 @@
               6
             </span>
           </inertia-link>
-          <a href="#" class="mt-2 -mx-3 px-3 py-2 flex items-center justify-between text-sm font-medium hover:bg-gray-200 rounded-lg">
+          <inertia-link v-if="$page.auth.user" :href="'/threads?by='+$page.auth.user.name" class="mt-2 -mx-3 px-3 py-2 flex items-center justify-between text-sm font-medium hover:bg-gray-200 rounded-lg">
             <span class="inline-flex">
               <font-awesome-icon icon="question-circle" class="h-6 w-6 fill-current text-gray-500" size="lg" />
-            <span class="ml-2 text-gray-700">Questions</span>
+            <span class="ml-2 text-gray-700">My Threads</span>
             </span>
-          </a>
+          </inertia-link>
           <a href="#" class="mt-2 -mx-3 px-3 py-2 flex items-center justify-between text-sm font-medium hover:bg-gray-200 rounded-lg">
             <span class="inline-flex">
               <font-awesome-icon icon="check-circle" class="h-6 w-6 fill-current text-gray-500" size="lg" />
