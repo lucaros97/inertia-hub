@@ -39,11 +39,14 @@ class ThreadsController extends Controller
 
     public function create()
     {
-        return Inertia::render('Threads/Create');
+        return Inertia::render('Threads/Create', [
+            'channels' => Channel::all()
+        ]);
     }
 
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'title' => 'required',
             'body'  => 'required',
@@ -57,7 +60,10 @@ class ThreadsController extends Controller
             'body'          => request('body')
         ]);
 
-        return Redirect::route('showthread', $thread->id);
+        $channel = Channel::find(request('channel_id'));
+
+        // dd($channel->slug);
+        return Redirect::route('showthread', [$channel->slug, $thread->id]);
     }
 
     public function show($channelId, Thread $thread)
