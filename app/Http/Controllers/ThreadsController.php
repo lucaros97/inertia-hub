@@ -21,10 +21,9 @@ class ThreadsController extends Controller
     public function index(Channel $channel, ThreadFilters $filters)
     {
         $threads = $this->getThreads($channel, $filters);
-        
-        foreach ($threads as $thread) {
-            $thread->channel = $thread->channel;
-            $thread->creator = $thread->creator;
+
+        if(request()->wantsJson()) {
+            return $threads;
         }
 
         return Inertia::render('Threads/Index', [
@@ -65,7 +64,7 @@ class ThreadsController extends Controller
     public function show($channelId, Thread $thread)
     {
         $thread = $thread->withCount('replies')
-            ->first()
+            ->find($thread->id)
             ->load('replies')
             ->load('creator')
             ->load('channel');
@@ -82,9 +81,15 @@ class ThreadsController extends Controller
     protected function getThreads(Channel $channel, ThreadFilters $filters)
     {
         $threads = Thread::latest()->filter($filters);
+
         if ($channel->exists) {
             $threads->where('channel_id', $channel->id);
         }
-        return $threads->get();
+
+        return $threads->withCount('replies')
+            ->get()
+            ->load('replies')
+            ->load('creator')
+            ->load('channel');
     }
 }
