@@ -64,19 +64,18 @@ class ThreadsController extends Controller
 
     public function show($channelId, Thread $thread)
     {
-        $replies = $thread->replies;
-        $creator = $thread->creator;
+        $thread = $thread->withCount('replies')
+            ->first()
+            ->load('replies')
+            ->load('creator')
+            ->load('channel');
 
-        foreach ($replies as $key => $reply) {
+        foreach ($thread->replies as $key => $reply) {
             $reply->owner = $reply->owner;
         }
 
-        $thread->channel = $thread->channel;
-
         return Inertia::render('Threads/Show', [
-            'thread'    => $thread,
-            'creator'   => $creator,
-            'replies'   => $replies
+            'thread'    => $thread
         ]);
     }
 

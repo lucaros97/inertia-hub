@@ -5,10 +5,10 @@ import Vue from 'vue'
 Vue.use(require('vue-moment'));
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCompass, faCheckCircle, faChartLine, faTags, faUserCheck, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCompass, faCheckCircle, faChartLine, faTags, faUserCheck, faQuestionCircle, faBackward, faForward } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faCompass, faQuestionCircle, faCheckCircle, faChartLine, faTags, faUserCheck)
+library.add(faCompass, faQuestionCircle, faCheckCircle, faChartLine, faTags, faUserCheck, faBackward, faForward)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
