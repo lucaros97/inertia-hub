@@ -2,6 +2,38 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+.bg-inertia-green {
+  background-color: #92eee2;
+}
+
+.bg-inertia-purple {
+  background-color: #9f7aea;
+}
+
+.text-inertia-purple {
+  color: #9f7aea;
+}
+
+.btn-inertia {
+  background-color: #EDF2F7;
+  color: #CBD5E0;
+}
+
+.btn-inertia:hover {
+  background-color: #92eee2;
+  color: #9f7aea;
+}
+
+.btn-inertia-active {
+  background-color: #9f7aea;
+  color: #fff;
+}
+
+.btn-inertia-active:hover {
+  background-color: #92eee2;
+  color: #9f7aea;
+}
+
 .form-textarea {
   -moz-appearance: none;
   appearance: none;

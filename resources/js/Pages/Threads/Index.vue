@@ -5,7 +5,7 @@
         <span class="text-3xl font-bold">All Questions</span>
         <div class="flex align-items-center justify-between mt-5">
           <div class="flex">
-            <select @change.prevent="selectChannel" v-model="selectedChannel" class="mx-2 block rounded-full appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+            <select @change.prevent="selectChannel" v-model="selectedChannel" class="mx-2 block rounded-full appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
               <option value="">All</option>
               <option v-for="channel in channels" :key="channel.id" :value="channel.slug">
                   {{ channel.name }}
@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="p-3 overflow-y-auto">
-        <article v-for="thread in threads" :key="thread.id" class="mt-3 px-6 pt-4 pb-6 xl:px-10 xl:pt-6 xl:pb-8 bg-white hover:bg-gray-200 rounded-lg">
+        <article v-for="thread in threads" :key="thread.id" class="mt-3 px-6 pt-4 pb-4 xl:px-10 xl:pt-5 xl:pb-5 bg-white hover:bg-gray-200 rounded-lg">
           <inertia-link :href="route('showthread', { thread: thread.id, channel: thread.channel.slug })">
             <div class="flex items-center justify-between">
               <div class="flex">

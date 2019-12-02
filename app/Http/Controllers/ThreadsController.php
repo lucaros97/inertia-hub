@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Reply;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
 
@@ -41,7 +42,6 @@ class ThreadsController extends Controller
 
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'title' => 'required',
             'body'  => 'required',
@@ -65,12 +65,12 @@ class ThreadsController extends Controller
     {
         $thread = $thread->withCount('replies')
             ->find($thread->id)
-            ->load('replies')
+            ->load(['replies.owner', 'replies.favorites'])
             ->load('creator')
             ->load('channel');
 
         foreach ($thread->replies as $key => $reply) {
-            $reply->owner = $reply->owner;
+            $reply->isFavorited = $reply->isFavorited();
         }
 
         return Inertia::render('Threads/Show', [
@@ -78,6 +78,12 @@ class ThreadsController extends Controller
         ]);
     }
 
+    /*
+     * Get the list of threads
+     * @param Channel $channel, ThreadFilters $filter
+     * @return \Illuminate\Database\Eloquent\Model
+     * @mixin \Eloquent
+     */
     protected function getThreads(Channel $channel, ThreadFilters $filters)
     {
         $threads = Thread::latest()->filter($filters);

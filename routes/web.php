@@ -23,6 +23,7 @@ Route::get('/threads/{channel}/{thread}')->name('showthread')->uses('ThreadsCont
 Route::post('/threads')->name('add_thread')->uses('ThreadsController@store');
 Route::get('threads/{channel}')->name('channels')->uses('ThreadsController@index');
 Route::post('/threads/{channel}/{thread}/replies')->name('add_reply_to_thread')->uses('RepliesController@store');
+Route::post('/replies/{reply}/favorites')->name('add_favorite')->uses('FavoritesController@store');
 
 
 // 500 error

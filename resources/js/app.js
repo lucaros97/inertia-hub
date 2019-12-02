@@ -4,18 +4,29 @@ import Vue from 'vue'
 
 Vue.use(require('vue-moment'));
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCompass, faCheckCircle, faChartLine, faTags, faUserCheck, faQuestionCircle, faBackward, faForward, faComment } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faCompass,
+  faCheckCircle,
+  faChartLine,
+  faTags,
+  faUserCheck,
+  faQuestionCircle,
+  faBackward,
+  faForward,
+  faComment,
+  faHeart
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(faCompass, faQuestionCircle, faCheckCircle, faChartLine, faTags, faUserCheck, faBackward, faForward, faComment)
+library.add(faCompass, faQuestionCircle, faCheckCircle, faChartLine, faTags, faUserCheck, faBackward, faForward, faComment,faHeart);
 
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-Vue.config.productionTip = false
-Vue.mixin({ methods: { route: window.route } })
-Vue.use(InertiaApp)
-Vue.use(PortalVue)
+Vue.config.productionTip = false;
+Vue.mixin({ methods: { route: window.route } });
+Vue.use(InertiaApp);
+Vue.use(PortalVue);
 
 Vue.prototype.$route = (...args) => route(...args).url()
 

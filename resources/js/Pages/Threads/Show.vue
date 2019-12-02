@@ -20,7 +20,7 @@
                 </span>
               </div>
             </div>
-          </div> 
+          </div>
           <div class="mt-4 xl:mt-6 text-gray-800 text-sm">
             <p>{{ thread.body }}</p>
           </div>
@@ -47,9 +47,19 @@
                   </span>
                 </div>
               </div>
-            </div> 
+            </div>
             <div class="mt-4 xl:mt-6 text-gray-800 text-sm">
               <p>{{ reply.body }}</p>
+            </div>
+            <div class="mt-4">
+              <form @submit.prevent="addFavorite(reply)">
+                <div class="mt-4 xl:mt-6 text-gray-800 text-sm font-medium">
+                  <button type="submit" class="bg-gray-400 font-bold py-2 px-3 rounded-full" :class="reply.isFavorited ? 'btn-inertia-active' : 'btn-inertia'">
+                      <font-awesome-icon icon="heart"></font-awesome-icon>
+                  </button>
+                  <span>{{ reply.favorites_count }} Likes</span>
+                </div>
+              </form>
             </div>
           </div>
         </article>
@@ -76,23 +86,27 @@ export default {
     return {
       formReply: {
         body: null
-      }
+      },
     }
   },
   props: {
     thread: Object,
     replies: Object
   },
-  // filters: {
-  //   pluralize: function(value) {
-  //     return value.pluralize() || "";
-  //   }
-  // },
+  beforeMount() {
+    console.log(this.thread);
+  },
   methods: {
     submit() {
       this.$inertia.post('/threads/' + this.thread.channel.slug + '/' + this.thread.id + '/replies', this.formReply)
         .then(() => this.formReply = {
           body: null
+        });
+    },
+    addFavorite(reply) {
+      this.$inertia.post('/replies/'+ reply.id + '/favorites')
+        .then(() => {
+          this.$inertia.reload();
         });
     }
   }

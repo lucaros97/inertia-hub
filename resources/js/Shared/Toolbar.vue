@@ -14,12 +14,12 @@
         <span class="hidden lg:inline ml-4 mr-2 text-sm font-medium text-white">
           {{ $page.auth.user.name }}
           <!-- Sono qui -->
-        </span> 
+        </span>
         <svg viewBox="0 0 24 24" class="ml-2 h-6 w-6 fill-current text-gray-400 lg:ml-auto">
           <path d="M7.293 9.293a1 1 0 011.414 0L12 12.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
         </svg>
       </button>
-    </div> 
+    </div>
     <div class="flex-1 flex items-center justify-between pl-2 pr-6 bg-gray-700 lg:px-6">
       <div class="ml-auto flex items-center">
         <button class="lg:hidden ml-5 text-gray-400 hover:text-gray-200">
@@ -43,7 +43,7 @@
         <button class="ml-4 text-gray-400 hover:text-gray-200">
           <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current">
             <path d="M12 18a1 1 0 100-2 1 1 0 000 2z"></path>
-            <path d="M12 4a8 8 0 100 16 8 8 0 000-16zM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12z"></path> 
+            <path d="M12 4a8 8 0 100 16 8 8 0 000-16zM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12z"></path>
             <path d="M12 8c-1.472 0-2.528.706-2.868 1.426a1 1 0 01-1.809-.852C8.082 6.964 9.99 6 12 6c1.3 0 2.515.394 3.428 1.079C16.343 7.764 17 8.786 17 10c0 2.07-1.834 3.508-3.817 3.889a.31.31 0 00-.162.083A.107.107 0 0013 14a1 1 0 01-2 0c0-1.142.909-1.904 1.805-2.075C14.279 11.642 15 10.729 15 10c0-.443-.237-.92-.771-1.321C13.694 8.278 12.909 8 12 8z"></path>
           </svg>
         </button>
