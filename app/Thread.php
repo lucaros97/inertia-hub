@@ -8,9 +8,11 @@ class Thread extends Model
 {
     protected $guarded = [];
 
+    protected $with = ['creator'];
+
     public function replies()
     {
-        return $this->hasMany(Reply::class)->withCount('favorites');
+        return $this->hasMany(Reply::class);
     }
 
     public function creator()

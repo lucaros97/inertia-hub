@@ -65,8 +65,7 @@ class ThreadsController extends Controller
     {
         $thread = $thread->withCount('replies')
             ->find($thread->id)
-            ->load(['replies.owner', 'replies.favorites'])
-            ->load('creator')
+            ->load('replies.favorites')
             ->load('channel');
 
         foreach ($thread->replies as $key => $reply) {
@@ -95,7 +94,6 @@ class ThreadsController extends Controller
         return $threads->withCount('replies')
             ->get()
             ->load('replies')
-            ->load('creator')
             ->load('channel');
     }
 }
