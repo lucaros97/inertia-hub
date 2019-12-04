@@ -12,7 +12,7 @@
       <button class="hidden sm:flex sm:items-center sm:w-full" v-else>
         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=144&amp;h=144&amp;q=80" alt="" class="h-8 w-8 rounded-full object-cover">
         <span class="hidden lg:inline ml-4 mr-2 text-sm font-medium text-white">
-          {{ $page.auth.user.name }}
+          <!--{{ $page.auth.user.name }}-->
           <!-- Sono qui -->
         </span>
         <svg viewBox="0 0 24 24" class="ml-2 h-6 w-6 fill-current text-gray-400 lg:ml-auto">

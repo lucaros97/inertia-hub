@@ -64,12 +64,11 @@ class ThreadsController extends Controller
     public function show($channelId, Thread $thread)
     {
         $thread = $thread->withCount('replies')
-            ->find($thread->id)
-            ->load('replies.favorites')
-            ->load('channel');
+            ->find($thread->id);
 
         foreach ($thread->replies as $key => $reply) {
             $reply->isFavorited = $reply->isFavorited();
+            $reply->favorites_count = $reply->getFavoritesCountAttribute();
         }
 
         return Inertia::render('Threads/Show', [

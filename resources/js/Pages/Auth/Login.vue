@@ -49,7 +49,7 @@ export default {
     }
   },
   mounted() {
-    document.title = 'Login | LayUp'
+    document.title = 'Login | Inertia Hub'
   },
   methods: {
     submit() {

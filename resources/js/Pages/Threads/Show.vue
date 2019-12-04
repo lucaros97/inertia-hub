@@ -91,7 +91,6 @@ export default {
   },
   props: {
     thread: Object,
-    replies: Object
   },
   beforeMount() {
     console.log(this.thread);
